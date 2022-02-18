@@ -1,0 +1,170 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf820
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgenericrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww9380\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+######################################################################\
+
+\fs28 *************************************************************************************\
+Welcome to Vector Bin Packing \'97 a command line tool!\
+*************************************************************************************\
+
+\fs24 ######################################################################\
+
+\fs28 \
+Welcome to Vector Bin Packing - a command line tool!\
+This command line tool analyzes instances for Vector Bin Packing given by an input file, using the algorithms and bounding procedures presented in the paper \'82Heuristics for Vector Bin Packing\'91.
+\fs24 \
+\
+######################################################################
+\fs28 \
+Required Libraries\
+
+\fs24 ######################################################################\
+\
+If you have not been provided with the executable you need to compile the package using \'82g++ -std=c++0x\'91. Further information on how to compile is found in \'82Compilation and Execution\'91.\
+\
+The required libraries are all contained in version C++11 ore later, they are\
+\
+<iostream>\
+<vector>\
+<fstream>\
+<stdio.h>\
+<string>\
+<numeric>\
+<math.h>\
+<cstdlib>\
+\
+\
+######################################################################
+\fs28 \
+Compilation and Execution\
+
+\fs24 ######################################################################\
+\
+The compilation uses a makefile contained in the package folder.\
+\
+If you run OSX or Linux operating system open your command line (\'82Console\'91, \'82Terminal\'91) and go to the folder where the files of VBPacking are stored.\
+Enter \'82make\'91 to compile.\
+Compilation should start.\
+Enter \'82make clean\'91 to remove the .o-files.\
+To execute in OSX go to the folder again and click (or double click according to your settings) on vbpacking. The program should start in your command line.\
+\
+In Linux it may be necessary to make the program available for execution.\
+To do so go to the respective folder and type \'82chmod +x vbpacking\'91.\
+To execute enter the command \'82./vbpacking\'91\'82 the program should start in your command line.\
+\
+If you run Windows and you do not possess a GUI for C++ you should probably consider downloading Cygwin at cygwin.com.\
+Download the correct version (32 or 64 bit). During installation make sure that the required packages are installed. These may be found at \
+https://cs.calvin.edu/courses/cs/112/resources/installingEclipse/cygwin/\
+\
+To execute open Cygwin Terminal and enter the command \'82cd /cygwin/c\'91. Now go to your program folder and enter the command \'82./vbpacking.exe\'91. The program should start now. \
+\
+######################################################################
+\fs28 \
+Input Specifications\
+
+\fs24 ######################################################################\
+
+\fs28 \
+An example for an input file can be found in the program package, called \'82example_input.txt\'91.\
+The program accepts text files of the following syntax:\
+\
+<dim> \
+<cap>\
+<val1>\
+<val2> \
+<val3> \
+<val4>\
+<val5> \
+<val6>\
+\'85 \
+\
+\
+Example:\
+\
+2\
+100.5\
+34.5\
+22.345\
+12.345\
+67.435\
+34.3434\
+\
+The delimiter between each line may (instead of a newline) as well be a whitespace.\
+<dim> accepts any number bigger than one and specifies the dimension of an instance. If dim is not integer it is rounded closer to 0. The following positions are all stored as double types which require a \'82.\'91 for a decimal point. Please make sure that only numeric values are found in the file.\
+\
+<cap> accepts any non-negative number and specifies the capacity of each bin where it is assumed that the capacities are equal in each dimension.\
+The following data val1, val2, \'85 are the demands of the items listed first by item and then by dimension, i.e. if dim = 3 then the values val1, val2 and val3 are assigned to the demands of the first item, val4, val5 and val6 are assigned to the second and so on. \
+If the number of values is not divisible by dim the list is truncated so that a maximum number of items is generated and for each item there are enough values available. The following error messages are printed if the input file fails to fulfill the above specifications.\
+	\
+If at most one position is given the process exits and prints 'Input file has too few arguments. Process aborted!'\
+	 \
+If the value in position <dim> is smaller than 1 the process exits and prints 'Dimension must be positive! Process aborted!'\
+	 \
+If the value in position <cap> is negative the program exits and prints 'Capacity must be non-negative. Process aborted!'\
+	 \
+If any of the values in position <val1>, <val2>, \'85 is bigger than cap the program exits displaying the error message Value in position <pos> is bigger than the capacity. Process aborted!' where <pos> is the position of the value.\
+	 \
+If any of the values val1, val2, \'85 is negative the programm exits and prints 'Value in position <pos> is negative. Process aborted!' where <pos> is the position of the value where we start counting at <dim>.\
+\
+\
+
+\fs24 ######################################################################
+\fs28 \
+Input and Output Handling\
+
+\fs24 ######################################################################\
+
+\fs28 \
+Input and Ouput Handling are also explained by the command line itself.\
+The program asks for the location-and-name of the input file and expects a string. The location relative to the program is meant by this. This handling may differ according to your settings. To be sure it is advisable to have your files in the same folder as vbpacking.\
+It further asks where the output files should be stored and for a dummy name for the output file without the suffix (e.g. txt). Since more than one output file may be generated all output files containing solutions receive the suffix of the corresponding algorithm name. The output file containing the bounds receives the suffix \'82bounds\'91.\
+It further asks for a file type suffix for the output files, e.g. \'82txt\'91 or \'82csv\'91. \
+\
+The command line asks then for the algorithms and bounds that should be executed. There are two options to respond: Either enter the command \'82A\'91 and all algorithms and bounds are executed and the solutions and bounds stored to files. Alternatively it accepts a string containing Y\'92s and N\'92s for yes and no, respectively. Each of the Y\'92s and N\'92s stands for an algorithm/bound in the following order\
+\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\b\fs22 \cf2 \CocoaLigature0 RandomFit wFFDSum FFDSum BF* BF BFDot* BFDot BFLINF* BFLINF LC L2 LH.
+\f0\b0\fs28 \cf0 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+Strings that are longer than 12 characters are truncated. If the truncated string contains characters different from Y or N the prompt is repeated. If the string contains less than 12 characters the missing characters are assumed to be N\'92s.\
+\
+Example:\
+The string YNYYNYN executes RandomFit, FFDSum, BF*, BFDot*.\
+\
+After that the selected algorithms and bounds are executed and their solutions or results are written to the respective output files.\
+\
+
+\fs24 ######################################################################
+\fs28 \
+Output Specifications\
+
+\fs24 ######################################################################\
+
+\fs28 \
+Syntax of the output files containing the solution and the number of bins needed:\
+ \
+ number_of_bins, <number_of_bins> \
+ <item>, <bin> \
+ <item>, <bin> \
+ <item>, <bin> \
+ <item>, <bin> \
+ <item>, <bin> \
+ \'85 \
+ \
+<item> is the index of the item where the items are ordered according to their appearance in the input file, <bin> is the index of the bin to which item <item> is assigned.\
+\
+Syntax of the output file containing the bounds:\
+ \
+LC, <LC>\
+L2, <L2>\
+LH, <LH>\
+\
+\
+}
