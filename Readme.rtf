@@ -1,18 +1,18 @@
 *************************************************************************************\
-Welcome to Vector Bin Packing \'97 a command line tool!\
+Welcome to Vector Bin Packing, a command line tool!
 *************************************************************************************\
 
 ######################################################################\
-This command line tool analyzes instances for Vector Bin Packing given by an input file, using the algorithms and bounding procedures presented in the paper \'82Heuristics for Vector Bin Packing\'91.
+This command line tool analyzes instances for Vector Bin Packing given an input file using various procedures.
 ######################################################################
 
-Required Libraries\
+Required Libraries
 
 ######################################################################\
 
 If you have not been provided with the executable you need to compile the package using \'82g++ -std=c++0x\'91. Further information on how to compile is found in \'82Compilation and Execution\'91.\
 
-The required libraries are all contained in version C++11 ore later, they are\
+The required libraries are all contained in version C++11 ore later, they are
 
 <iostream>
 <vector>
@@ -42,11 +42,11 @@ If you run Windows and you do not possess a GUI for C++ you should probably cons
 Download the correct version (32 or 64 bit). During installation make sure that the required packages are installed. These may be found at 
 https://cs.calvin.edu/courses/cs/112/resources/installingEclipse/cygwin/
 
-To execute open Cygwin Terminal and enter the command \'82cd /cygwin/c\'91. Now go to your program folder and enter the command './vbpacking.exe'. The program should start now.
+To execute open Cygwin Terminal and enter the command 'cd /cygwin/c'. Now go to your program folder and enter the command './vbpacking.exe'. The program should start now.
 
 ######################################################################
 
-Input Specifications\
+Input Specifications
 
 ######################################################################\
 
@@ -73,10 +73,10 @@ Example:
 34.3434
 
 The delimiter between each line may (instead of a newline) as well be a whitespace.
-<dim> accepts any number bigger than one and specifies the dimension of an instance. If dim is not integer it is rounded closer to 0. The following positions are all stored as double types which require a \'82.\'91 for a decimal point. Please make sure that only numeric values are found in the file.
+<dim> accepts any number bigger than one and specifies the dimension of an instance. If dim is not integer it is rounded closer to 0. The following positions are all stored as double types which require a '.' for a decimal point. Please make sure that only numeric values are found in the file.
 
 <cap> accepts any non-negative number and specifies the capacity of each bin where it is assumed that the capacities are equal in each dimension.
-The following data val1, val2, \'85 are the demands of the items listed first by item and then by dimension, i.e. if dim = 3 then the values val1, val2 and val3 are assigned to the demands of the first item, val4, val5 and val6 are assigned to the second and so on. 
+The following data val1, val2, ... are the demands of the items listed first by item and then by dimension, i.e. if dim = 3 then the values val1, val2 and val3 are assigned to the demands of the first item, val4, val5 and val6 are assigned to the second and so on. 
 If the number of values is not divisible by dim the list is truncated so that a maximum number of items is generated and for each item there are enough values available. The following error messages are printed if the input file fails to fulfill the above specifications.
 	
 If at most one position is given the process exits and prints 'Input file has too few arguments. Process aborted!'
@@ -85,7 +85,7 @@ If the value in position <dim> is smaller than 1 the process exits and prints 'D
 	 
 If the value in position <cap> is negative the program exits and prints 'Capacity must be non-negative. Process aborted!'
 	 
-If any of the values in position <val1>, <val2>, \'85 is bigger than cap the program exits displaying the error message Value in position <pos> is bigger than the capacity. Process aborted!' where <pos> is the position of the value.
+If any of the values in position <val1>, <val2>, ... is bigger than cap the program exits displaying the error message Value in position <pos> is bigger than the capacity. Process aborted!' where <pos> is the position of the value.
 	 
 If any of the values val1, val2, ... is negative the programm exits and prints 'Value in position <pos> is negative. Process aborted!' where <pos> is the position of the value where we start counting at <dim>.
 
@@ -93,32 +93,32 @@ If any of the values val1, val2, ... is negative the programm exits and prints '
 
 Input and Output Handling
 
-######################################################################\
+######################################################################
 
 Input and Ouput Handling are also explained by the command line itself.
 The program asks for the location-and-name of the input file and expects a string. The location relative to the program is meant by this. This handling may differ according to your settings. To be sure it is advisable to have your files in the same folder as vbpacking.
 It further asks where the output files should be stored and for a dummy name for the output file without the suffix (e.g. txt). Since more than one output file may be generated all output files containing solutions receive the suffix of the corresponding algorithm name. The output file containing the bounds receives the suffix 'bounds'.
 It further asks for a file type suffix for the output files, e.g. '.txt' or '.csv'.
 
-The command line asks then for the algorithms and bounds that should be executed. There are two options to respond: Either enter the command \'82A\'91 and all algorithms and bounds are executed and the solutions and bounds stored to files. Alternatively it accepts a string containing Y\'92s and N\'92s for yes and no, respectively. Each of the Y\'92s and N\'92s stands for an algorithm/bound in the following order.
+The command line asks then for the algorithms and bounds that should be executed. There are two options to respond: Either enter the command \'82A\'91 and all algorithms and bounds are executed and the solutions and bounds stored to files. Alternatively it accepts a string containing Y\'92s and N\'92s for yes and no, respectively. Each of the Y's and N's stands for an algorithm/bound in the following order.
 
 RandomFit wFFDSum FFDSum BF* BF BFDot* BFDot BFLINF* BFLINF LC L2 LH.
 
-Strings that are longer than 12 characters are truncated. If the truncated string contains characters different from Y or N the prompt is repeated. If the string contains less than 12 characters the missing characters are assumed to be N\'92s.\
+Strings that are longer than 12 characters are truncated. If the truncated string contains characters different from Y or N the prompt is repeated. If the string contains less than 12 characters the missing characters are assumed to be N's.
 
 Example:
 The string YNYYNYN executes RandomFit, FFDSum, BF*, BFDot*.
 
-After that the selected algorithms and bounds are executed and their solutions or results are written to the respective output files.\
+After that the selected algorithms and bounds are executed and their solutions or results are written to the respective output files.
 
 ######################################################################
 
 Output Specifications
 
-######################################################################\
+######################################################################
 
 
-Syntax of the output files containing the solution and the number of bins needed:\
+Syntax of the output files containing the solution and the number of bins needed:
 
  number_of_bins, <number_of_bins> 
  <item>, <bin> 
